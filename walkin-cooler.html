@@ -22,7 +22,7 @@ Walk-in coolers and freezers are essential for food service, hospitality, and co
           </p>
 
           <h3>Core Services Include:</h3>
-<ul class="services-list">
+<ul class="services-list" style="text-align: left;">
   <li>Complete walk-in cooler and freezer installation</li>
   <li>Preventive maintenance and system optimization</li>
   <li>Repairs for compressors, evaporators, and controls</li>
@@ -33,8 +33,8 @@ Walk-in coolers and freezers are essential for food service, hospitality, and co
       </div>
 
       <!-- RIGHT IMAGE -->
-      <div class="mini-split-image">
-        <img src="./assets/images/walkin-main.webp" alt="Mini Split Air Conditioner">
+      <div class="mini-split-image" style="margin-bottom: 40px;">
+        <img src="./assets/images/walkin_hero.jpeg" alt="Mini Split Air Conditioner">
       </div>
     </div>
   </section>
@@ -624,6 +624,63 @@ ul.subservice__list li::before,
   .image img,
   .subservice__image img {
     border-radius: 18px;
+  }
+}
+/* =========================
+   MOBILE TYPOGRAPHY & LAYOUT FIX
+========================= */
+@media (max-width: 900px) {
+
+  /* ===== HEADINGS ===== */
+  .mini-split-content h1,
+  .content h2,
+  .subservice__title {
+    font-size: 25px;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .mini-split-content h3,
+  .content h3,
+  .subservice__subtitle {
+    font-size: 18px;
+    text-align: left;
+  }
+
+  /* ===== PARAGRAPHS ===== */
+  .mini-split-content p,
+  .content p,
+  .subservice__description {
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: left;   /* IMPORTANT */
+  }
+
+  /* ===== LISTS ===== */
+  ul.services-list,
+  ul.subservice__list,
+  .content ul {
+    padding-left: 0;    /* REMOVE LEFT PADDING */
+  }
+
+  ul.services-list li,
+  ul.subservice__list li,
+  .content ul li {
+    padding-left: 18px; /* keep bullet spacing only */
+  }
+
+  /* ===== HERO IMAGE ===== */
+  .mini-split-image {
+    height: 40vh;
+  }
+
+  .mini-split-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .mini-split-content h1,
+  .content h2{
+    text-align: center;
   }
 }
 

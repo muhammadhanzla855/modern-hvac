@@ -21,7 +21,7 @@
 We provide complete HVAC diagnostics, repair, and maintenance services to keep your heating and cooling systems running efficiently and reliably. From identifying performance issues to restoring system operation and preventing future breakdowns, our services are designed for long-term comfort and peace of mind.          </p>
 
           <h3>Core Services Include:</h3>
-<ul class="services-list">
+<ul class="services-list" style="text-align: left;">
   <li>Accurate system diagnostics to identify airflow, electrical, and performance issues</li>
   <li>Professional HVAC repairs for heating, cooling, and heat pump systems</li>
   <li>Preventive maintenance programs to extend system lifespan</li>
@@ -31,7 +31,7 @@ We provide complete HVAC diagnostics, repair, and maintenance services to keep y
       </div>
 
       <!-- RIGHT IMAGE -->
-      <div class="mini-split-image">
+      <div class="mini-split-image" style="margin-bottom: 40px;">
         <img src="./assets/images/maintain-hero.webp" alt="Mini Split Air Conditioner">
       </div>
     </div>
@@ -74,10 +74,10 @@ Our comprehensive HVAC inspections are designed to identify potential issues bef
       <!-- LEFT IMAGES -->
       <div class="subservice__images">
         <div class="subservice__image subservice__image--one">
-          <img src="./assets/images/copressor1.webp" alt="Multi-Zone Mini-Split System">
+          <img src="./assets/images/compressor_1.jpeg" alt="Multi-Zone Mini-Split System">
         </div>
         <div class="subservice__image subservice__image--two">
-          <img src="./assets/images/copressor2.webp" alt="Multi-Zone Mini-Split Indoor Units">
+          <img src="./assets/images/compressor_2.jpeg" alt="Multi-Zone Mini-Split Indoor Units">
         </div>
       </div>
 
@@ -629,6 +629,63 @@ ul.subservice__list li::before,
   .image img,
   .subservice__image img {
     border-radius: 18px;
+  }
+}
+/* =========================
+   MOBILE TYPOGRAPHY & LAYOUT FIX
+========================= */
+@media (max-width: 900px) {
+
+  /* ===== HEADINGS ===== */
+  .mini-split-content h1,
+  .content h2,
+  .subservice__title {
+    font-size: 25px;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .mini-split-content h3,
+  .content h3,
+  .subservice__subtitle {
+    font-size: 18px;
+    text-align: left;
+  }
+
+  /* ===== PARAGRAPHS ===== */
+  .mini-split-content p,
+  .content p,
+  .subservice__description {
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: left;   /* IMPORTANT */
+  }
+
+  /* ===== LISTS ===== */
+  ul.services-list,
+  ul.subservice__list,
+  .content ul {
+    padding-left: 0;    /* REMOVE LEFT PADDING */
+  }
+
+  ul.services-list li,
+  ul.subservice__list li,
+  .content ul li {
+    padding-left: 18px; /* keep bullet spacing only */
+  }
+
+  /* ===== HERO IMAGE ===== */
+  .mini-split-image {
+    height: 40vh;
+  }
+
+  .mini-split-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .mini-split-content h1,
+  .content h2{
+    text-align: center;
   }
 }
 

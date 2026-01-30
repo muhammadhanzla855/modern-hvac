@@ -26,7 +26,7 @@
       </div>
 
       <!-- RIGHT IMAGE -->
-      <div class="mini-split-image">
+      <div class="mini-split-image" style="margin-bottom: 40px;">
         <img src="./assets/images/who-we-r.webp" alt="Mini Split Air Conditioner">
       </div>
     </div>
@@ -500,6 +500,26 @@ h3 {
     order: 1;
   }
 }
+/* =========================
+   MOBILE: LEFT ALIGN TEXT
+   p + ul only
+========================= */
+@media (max-width: 900px) {
+
+  /* Paragraphs */
+  .mini-split-content p,
+  .content p,
+  .subservice__description {
+    text-align: left !important;
+  }
+
+  /* Lists */
+  ul.services-list,
+  .content ul {
+    text-align: left !important;
+  }
+
+}
 
 </style>
 <script>
@@ -525,3 +545,59 @@ fetch('/footer.html')
   .then(res => res.text())
   .then(html => document.getElementById('footer').innerHTML = html);
 </script>
+<script>
+function reorderMobileContent() {
+  const isMobile = window.innerWidth <= 600;
+
+  /* ===== HERO SECTION ===== */
+  const hero = document.querySelector('.mini-split-container');
+  if (hero) {
+    const h1 = hero.querySelector('h1');
+    const img = hero.querySelector('.mini-split-image');
+    const p = hero.querySelector('p');
+
+    if (isMobile && !hero.classList.contains('reordered')) {
+      h1.after(img);
+      img.after(p);
+      hero.classList.add('reordered');
+    }
+
+    if (!isMobile && hero.classList.contains('reordered')) {
+      hero.classList.remove('reordered');
+    }
+  }
+
+  /* ===== ALL OTHER SECTIONS ===== */
+  document
+    .querySelectorAll('.subservice__container, .what-we-build .container')
+    .forEach(section => {
+
+      const heading = section.querySelector('h1, h2');
+      const imageBlock = section.querySelector('.images, .subservice__images');
+      const paragraph = section.querySelector('p');
+      const list = section.querySelector('ul');
+
+      if (
+        isMobile &&
+        heading &&
+        imageBlock &&
+        !section.classList.contains('reordered')
+      ) {
+        heading.after(imageBlock);
+        if (paragraph) imageBlock.after(paragraph);
+        if (list) paragraph?.after(list);
+
+        section.classList.add('reordered');
+      }
+
+      if (!isMobile && section.classList.contains('reordered')) {
+        section.classList.remove('reordered');
+      }
+    });
+}
+
+/* Run on load + resize */
+window.addEventListener('load', reorderMobileContent);
+window.addEventListener('resize', reorderMobileContent);
+</script>
+

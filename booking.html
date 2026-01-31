@@ -32,7 +32,10 @@
     </div>
 
     <!-- WhatsApp Button as <a> -->
-    <a href="#" id="whatsappBtn" class="booking-form__button" target="_blank">
+    <a href="#"
+   id="whatsappBtn"
+   class="booking-form__button"
+   target="_blank">
   GET A CALL BACK
   <span class="booking-form__button-icon">→</span>
 </a>
@@ -60,39 +63,65 @@
 .booking-form__button-icon { background:#fff; color:#f97316; width:1.75rem; height:1.75rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; transition:transform 0.3s, background 0.3s; }
 .booking-form__button:hover .booking-form__button-icon { transform:translateX(3px); background:#000; color:#fff; }
 @media(max-width:768px){ .booking-section { flex-direction:column; gap:2rem; } .booking-section__map { min-height:250px; } .booking-section__form-wrapper { max-width:100%; } }
-</style>
+.booking-form__button {
+  text-decoration: none;  /* removes underline */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  /* existing styles below */
+  width:100%; 
+  padding:0.75rem; 
+  border-radius:9999px; 
+  border:none; 
+  background:#f97316; 
+  color:white; 
+  font-weight:600; 
+  font-size:1rem; 
+  transition:background 0.3s, transform 0.3s;
+}
 
+</style>
 <script>
 const whatsappBtn = document.getElementById("whatsappBtn");
 
-whatsappBtn.addEventListener("click", function(e) {
-  // Grab form values
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const message = document.getElementById("message").value.trim();
+// Only enable WhatsApp logic on booking.html
+if (window.location.pathname.includes("booking.html")) {
 
-  if (!name || !email || !phone || !message) {
-    e.preventDefault(); // Stop link navigation
-    alert("Please fill all fields before submitting!");
-    return;
-  }
+  whatsappBtn.addEventListener("click", function(e) {
+    // Grab form values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-  // WhatsApp number
-  const whatsappNumber = "19093422886";
+    if (!name || !email || !phone || !message) {
+      e.preventDefault(); // Stop link navigation
+      alert("Please fill all fields before submitting!");
+      return;
+    }
 
-  // Construct message
-  const whatsappMessage = `Hello, I’m looking for HVAC services from Modern Heating and Cooling Solutions.
+    // WhatsApp number
+    const whatsappNumber = "19093422886";
+
+    // Construct message
+    const whatsappMessage = `Hello, I’m looking for HVAC services from Modern Heating and Cooling Solutions.
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
 Message: ${message}`;
 
-  const encodedMessage = encodeURIComponent(whatsappMessage);
+    const encodedMessage = encodeURIComponent(whatsappMessage);
 
-  // Update href dynamically at click time
-  whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    // Set href dynamically
+    whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-  // No need to call window.open; the <a> tag handles it
-});
+    // Let the <a> navigate naturally
+  });
+
+} else {
+  // On other pages, href stays #
+  whatsappBtn.href = "#";
+}
 </script>
